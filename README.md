@@ -18,7 +18,7 @@ Original work belongs to [@falsandtru](https://github.com/falsandtru)
 
 ## Read more
 
-The author does not offer prebuilt esm modules, so this repository exists to provide them.
+The author does not offer prebuilt esm modules (exports typescript instead), so this repository exists to provide them.
 
 Read more here
 
