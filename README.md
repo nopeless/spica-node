@@ -2,7 +2,7 @@
 
 Original repository: <https://github.com/falsandtru/spica>
 
-Original NPM package: <
+Original NPM package: <https://www.npmjs.com/package/spica>
 
 This repository does not use the trademark `spica` and has no affiliation with the original author.
 
