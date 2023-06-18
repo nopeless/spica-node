@@ -5,18 +5,27 @@ const pkg = JSON.parse(readFileSync("spica/package.json", "utf8").replaceAll("ht
 
 pkg.type = "module";
 pkg.description = "Fork of @falsantru/spica, esm support";
-pkg.name = "@nopeless/spica-node",
+pkg.name = "spica-node";
 pkg.exports = {
     "./*": {
         "default": "./dist/*",
         "types": "./dist/*.d.ts"
     }
-}
+};
+pkg.files = [
+    "LICENSE.*",
+    "NOTICE.md",
+    "package.json",
+    "src",
+    "dist"
+];
+pkg.private = false;
+
 
 const newPkg = JSON.stringify(pkg, null, 2);
 
 writeFileSync("spica/package.json", newPkg, "utf8");
 
-const versions = JSON.parse(execSync("npm view spica versions --json").toString());
+const versions = JSON.parse(execSync("npm view spica-node versions --json").toString());
 
 console.log(versions.includes(pkg.version) ? "true" : "false");

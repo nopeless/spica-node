@@ -1,11 +1,3 @@
 {
-  "name": "@nopeless/spica-node",
-  "version": "0.0.0",
-  "type": "module",
-  "description": "Fork of @falsantru/spica, esm support",
-  "main": "index.js",
-  "repository": "https://github.com/nopeless/spica-node",
-  "author": "falsandtru, nopeless",
-  "license": "(Apache-2.0 AND MPL-2.0)",
-  "private": false
+  "type": "module"
 }
