@@ -1,0 +1,36 @@
+name: Publish Package to npmjs
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # every 7 days
+    # https://crontab.cronhub.io/
+    - cron: '0 0 */7 * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      # Setup .npmrc file to publish to npm
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+      - run: git clone https://github.com/falsandtru/spica.git
+      # Check if we have to publish
+      - run: |
+          if [[ $(node patch-package.js) == "false" ]]; then
+            cd spica
+            mv ../fix-ts-issue.patch .
+            git am fix-ts-issue.patch
+            npm install
+            npm install @babel/cli
+            mv ../tsconfig.build.json .
+            tsc -p tsconfig.build.json && babel dist --plugins unassert --extensions .js --out-dir dist
+            mv src ../src
+            mv dist ../dist
+            npm publish --dry
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
