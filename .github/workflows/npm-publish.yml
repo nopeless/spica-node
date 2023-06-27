@@ -24,6 +24,7 @@ jobs:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
       - run: git clone https://github.com/falsandtru/spica.git
+      - run: npm i -g yarn && yarn install --immutable
       # Check if we have to publish
       - run: chmod +x ./workflow.sh
       - run: ./workflow.sh
