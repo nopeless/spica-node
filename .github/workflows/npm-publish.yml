@@ -7,6 +7,12 @@ on:
     # every 7 days
     # https://crontab.cronhub.io/
     - cron: '0 0 */7 * *'
+  workflow_dispatch:
+    inputs:
+      publish_version:
+        description: 'version to publish'
+        required: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,3 +29,4 @@ jobs:
       - run: ./workflow.sh
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TARGET_VERSION_OVERRIDE: ${{ github.event.inputs.publish_version }}
