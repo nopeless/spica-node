@@ -33,4 +33,4 @@ writeFileSync("spica/package.json", newPkg, "utf8");
 
 const versions = JSON.parse(execSync("npm view spica-node versions --json").toString());
 
-console.log(pkg.version && versions.includes(pkg.version) ? "true" : "false");
+console.log(newPkg.version && versions.includes(newPkg.version) ? "true" : "false");
