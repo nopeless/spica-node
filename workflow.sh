@@ -3,7 +3,7 @@ then
   node patch.js
   cd spica
   npm install
-  npm install @babel/cli
+  npm install --no-save @babel/cli
   mv ../tsconfig.build.json .
   rm README.md
   mv ../README.md .
