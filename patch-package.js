@@ -8,13 +8,9 @@ const { TARGET_VERSION_OVERRIDE } = process.env;
 pkg.type = "module";
 pkg.description = "Fork of @falsantru/spica, esm support";
 pkg.name = "spica-node";
-// esm hates this, idk why
-// pkg.exports = {
-//     "./*": {
-//         "default": "./dist/*",
-//         "types": "./dist/*.d.ts"
-//     }
-// };
+pkg.exports = {
+    "./*": "./dist/*"
+};
 pkg.files = [
     "LICENSE.*",
     "NOTICE.md",
