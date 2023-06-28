@@ -17,7 +17,9 @@ replaceAllSync("spica/src/url.ts",
 for (const file of globSync("./spica/**/*.ts", { ignore: '**/node_modules/**' })) {
   const absolutePath = resolve(file)
   console.log(absolutePath)
-  replaceAllSync(file, /^(import\s+(?:\{[^}]+\}|\w+)\s+from\s+["'`])([^"'`]+)(["'`])/gms, (m, front, ident, back) => {
+  // this replacing syntax has an illegal syntax allowed called "import * from 'some-module'"
+  // it also does not support import "" side effects
+  replaceAllSync(file, /^((?:import|export)\s+(?:\*|\{[^}]+\}|\w[\d\w]*)\s+from\s+["'`])([^"'`]+)(["'`])/gms, (m, front, ident, back) => {
     // must be relative import
     if (!ident.match(/^\./)) return m;
 
