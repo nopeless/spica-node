@@ -9,7 +9,10 @@ pkg.type = "module";
 pkg.description = "Fork of @falsantru/spica, esm support";
 pkg.name = "spica-node";
 pkg.exports = {
-    "./*": "./dist/*"
+    "./*": {
+        "default": "./dist/*.js",
+        "types": "./dist/*.d.ts"
+    }
 };
 pkg.files = [
     "LICENSE.*",
